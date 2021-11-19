@@ -1,24 +1,71 @@
-# README
+# Run
+rails s
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Routes view
+rake routes
+or
+{URL}/rails/info/routes
 
-Things you may want to cover:
+# Scaffold Example
+rails g scaffold Book title:string number_of_pages:integer
+rake db:migrate
 
-* Ruby version
+# Devise install
+rails g devise:install
+rails g devise User
+rake db:migrate
 
-* System dependencies
+# add controller example
+rails g controller StaticPages home
+ 
+# top page
+In file config/routes.rb:
+ root 'static_pages#home'
+Homepage: app/views/static_pages/home.html.erb
+Layout: app/views/layouts/application.html.erb
 
-* Configuration
+# add more column of User
+rails g migration add_name_and_age name:string age:integer
 
-* Database creation
+def change
+    add_column :users, :name, :string
+    add_column :users, :age, :integer
+    add_index :users, :name, unique: true
+end
 
-* Database initialization
+rake db:migrate
+rails g devise:views
 
-* How to run the test suite
+And update view new and edit:
+<div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+</div>
+<div class="field">
+    <%= f.label :age %><br />
+    <%= f.number_field :age %>
+</div>
 
-* Services (job queues, cache servers, search engines, etc.)
+app/model/user.rb
+  validates :name, presence: true
+  validates :age, presence: true
+      
+app/controllers/application_controller.rb
+class ApplicationController < ActionController::Base
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  protect_from_forgery with: :exception
+  
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  
+  protected
+  def configure_permitted_parameters
+    # sign_upのときに、name, ageを許可する
+    devise_parameter_sanitizer.permit :sign_up, keys: [:name, :age]
+    
+    # account_updateのときに、name,ageを許可する
+    devise_parameter_sanitizer.permit :account_update, keys: [:name, :age]
+  end
+end
 
-* Deployment instructions
 
-* ...

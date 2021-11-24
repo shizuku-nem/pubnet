@@ -6,4 +6,7 @@ class User < ApplicationRecord
          
   validates :name, presence: true
   validates :age, presence: true
+  validates :nickname, presence: true
+  validates :gender, presence: true
+  validates :game_id, presence: true
 end

@@ -1,0 +1,39 @@
+<p> List of users <p>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>ニックネーム</th>
+            <th>アドレス</th>
+            <th>管理者？</th>
+            <th>投稿</th>
+            <th>コメント</th>
+            <th>リンク</th>
+            <th>アクション</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @users.each do |user| %>
+            <tr>
+                <td><%= user.id %></td>
+                <td><%= user.nickname %></td>
+                <td><%= user.email %></td>
+                <td><%= user.is_admin %></td>
+                <td> null</td>
+                <td> null </td>
+                <td><%= "/user#{user.id}" %></td>
+                <td>
+                    <%= link_to "編集", users_changeRole_path(id:user.id) %>
+                    <%= link_to "削除", admin_destroy_user_path(user),
+                        method: :delete,
+                        data: {confirm: "Are you sure?"}
+                    %>
+
+                </td>
+            <tr>
+            
+        <% end %>
+    </tbody>
+    <%= link_to "追加", admin_create_user_path %>
+</table>

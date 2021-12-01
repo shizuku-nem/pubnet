@@ -71,7 +71,9 @@
 	    		<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" style="margin-bottom: 5px;" class="bi bi-heart" viewBox="0 0 16 16">
 				  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
 				</svg>
-	    		<%= link_to "ハート", destroy_user_session_path, method: :delete , :style => "color: black; font-size: 25px; text-decoration: unset;", :class => "text-center side-link" %> 
+	    		<button type="button" data-bs-toggle="modal" data-bs-target="#heart-modal" style="color: black; font-size: 25px; text-decoration: unset; background-color: white; border-width: 0;">
+				  ハート
+				</button>
 	    	</div>
 	    	<div class="col" style="background-color: white; margin-top: 5px; border-radius: 5px;">
 	    		<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" style="margin-bottom: 5px;" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
@@ -86,6 +88,26 @@
 	    	<%= image_tag("img_event2.png", height: '200', width: '260', style: "display: block; margin-left: auto; margin-right: auto;", :alt => "event")%>
 	    	<%= image_tag("img_event3.png", height: '200', width: '260', style: "display: block; margin-left: auto; margin-right: auto;", :alt => "event")%>
 	  	</div>
+	  	<!-- Modal -->
+			<div class="modal fade" id="heart-modal" tabindex="-1" aria-labelledby="title" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header" style="background-color: #F6AE20;">
+			        <h5 class="modal-title" id="title">ハート一覧</h5>
+			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			      </div>
+			      <div class="modal-body">
+			        <div style="display: flex; flex-direction: row; position: relative;">
+					<%= image_tag("img_avtdemo.png", height: '50', width: '50', style: "border-radius: 200px; border: 1px solid #FFFF00;", :alt => "avatar")%>
+					<h5 style="color: black; padding: 15px;"><%= current_user.name %></h5>
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" style="margin-top: 18px;" class="bi bi-heart-fill" viewBox="0 0 16 16">
+					  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+					</svg>
+				</div>
+			      </div>
+			    </div>
+			  </div>
+			</div>
   	</div>
 <% else %> 
 	<h1 style="color: white">Welcome to pubnet</h1>

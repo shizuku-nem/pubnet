@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   
   def after_sign_in_path_for(resource)
     if current_user.is_admin
-      return '/admin'
+      return '/users'
     end
     return root_path
   end

@@ -87,7 +87,7 @@
       <div class="mb-3 row" style="justify-content: center; color: white" >
         <label for="gender" class="col-sm-2 col-form-label">性別</label>
         <div class="col-sm-4">
-          <%= f.text_field :gender, class: "form-control", style: "padding-left: 10px" %>
+          <%= f.select :gender, User.genders.keys.to_a, class: "form-control", style: "" %>
         </div>
         <div class="col-sm-6"></div>
       </div>

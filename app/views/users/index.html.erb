@@ -1,4 +1,6 @@
-<p> List of users <p>
+<% if user_signed_in? %>
+<%= link_to "ログアウト", destroy_user_session_path, method: :delete , :class => "btn btn-danger", :style => "color: white" %> 
+<h1> List of users </h1>
 
 <table>
     <thead>
@@ -37,3 +39,4 @@
     </tbody>
     <%= link_to "追加", admin_create_user_path %>
 </table>
+<% end %>

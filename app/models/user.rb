@@ -9,5 +9,5 @@ class User < ApplicationRecord
   validates :nickname, presence: true
   validates :gender, presence: true
   validates :game_id, presence: true
-  enum gender: [:male, :female, :other]
+  enum gender: [ :male, :female, :other ]
 end

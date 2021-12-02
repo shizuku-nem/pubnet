@@ -4,9 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  validates :name, presence: true
-  validates :age, presence: true
-  validates :nickname, presence: true
-  validates :gender, presence: true
-  validates :game_id, presence: true
+  validates :name, presence: true, length: { in: 3..20 }
+  validates :age, presence: true, numericality: { only_integer: true, :greater_than => 0, :less_than => 120 }
+  validates :nickname, presence: true, length: { in: 3..20 }
+  validates :gender, presence: true, numericality: { only_integer: true, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 2 }
+  validates :game_id, presence: true, length: { in: 3..20 }
+  enum gender: [ '男性', '女性', '他の性別' ]
 end

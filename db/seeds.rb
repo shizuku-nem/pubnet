@@ -10,8 +10,8 @@ admin = User.create({
     nickname: 'admin',
     email: 'admin@gmail.com',
     password: '123456',
-    gender: 'non-binary',
-    game_id: '1',
+    gender: 0,
+    game_id: 'namsan1',
     age: 10,
     is_admin: true
 })

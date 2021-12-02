@@ -12,13 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_12_02_004843) do
 
-  create_table "books", force: :cascade do |t|
-    t.string "title"
-    t.integer "number_of_pages"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -30,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_12_02_004843) do
     t.string "name"
     t.integer "age"
     t.string "nickname"
-    t.string "gender"
+    t.integer "gender"
     t.string "game_id"
     t.boolean "is_admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true

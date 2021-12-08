@@ -1,42 +1,73 @@
-<% if user_signed_in? %>
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete , :class => "btn btn-danger", :style => "color: white" %> 
-<h1> List of users </h1>
+<div class="container">
+    <% if user_signed_in? %>
+    <div class="row">
+        <div class="col-9">
+            <br>
+            <div style="flex-direction: row; display: flex;">
+                <h4 style="font-weight: 800; padding-right: 20px;"> Pubnet</h4> 
+                <div class="input-group rounded" style="width: 70%">
+                  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                  aria-describedby="search-addon" />
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" style="margin-left: 20; margin-top: 5" width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              </svg>
+              <h5 style="padding: 5px">Option</h5>
+          </div>
+          <br><br>
+          <div class="d-flex justify-content-around">
+              <%= link_to "投稿", admin_create_user_path, :class => "btn btn-light", :style => "color: black" %>
+              <%= link_to "ユーザ", admin_create_user_path, :class => "btn btn-dark", :style => "color: white" %>
+          </div>
+          <br><br>
+          <div class="customAdminDiv">
+              <h3 class="text-center" style="padding: 10px;"> ユーザ一覧</h1>
 
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>ニックネーム</th>
-            <th>アドレス</th>
-            <th>管理者？</th>
-            <th>投稿</th>
-            <th>コメント</th>
-            <th>リンク</th>
-            <th>アクション</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @users.each do |user| %>
-            <tr>
-                <td><%= user.id %></td>
-                <td><%= user.nickname %></td>
-                <td><%= user.email %></td>
-                <td><%= user.is_admin %></td>
-                <td> null</td>
-                <td> null </td>
-                <td><%= "/user#{user.id}" %></td>
-                <td>
-                    <%= link_to "編集", users_changeRole_path(id:user.id) %>
-                    <%= link_to "削除", admin_destroy_user_path(user),
-                        method: :delete,
-                        data: {confirm: "Are you sure?"}
-                    %>
+              <table class="table table-hover table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th >ID</th>
+                        <th>ニックネーム</th>
+                        <th>アドレス</th>
+                        <th>管理者？</th>
+                        <th>投稿</th>
+                        <th>コメント</th>
+                        <th>リンク</th>
+                        <th>アクション</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @users.each do |user| %>
+                    <tr>
+                        <td  class="textTable"><%= user.id %></td>
+                        <td  class="textTable"><%= user.nickname %></td>
+                        <td  class="textTable"><%= user.email %></td>
+                        <td  class="textTable"><%= user.is_admin %></td>
+                        <td  class="textTable"> null</td>
+                        <td  class="textTable"> null </td>
+                        <td  class="textTable"><%= "/user#{user.id}" %></td>
+                        <td>
+                            <%= link_to "編集", users_changeRole_path(id:user.id), :class => "btn btn-primary", :style => "color: white"  %>
+                            <%= link_to "削除", admin_destroy_user_path(user),
+                            method: :delete,
+                            data: {confirm: "Are you sure?"}, :class => "btn btn-danger", :style => "color: white" 
+                        %>
 
-                </td>
-            <tr>
-            
-        <% end %>
-    </tbody>
-    <%= link_to "追加", admin_create_user_path %>
-</table>
+                    </td>
+                </tr>
+
+                <% end %>
+            </tbody>
+        </table>
+        <%= link_to "追加", admin_create_user_path, :class => "btn btn-warning", :style => "color: white" %>
+    </div>
+    <br>
+
+</div>
+<div class="col-3" style="background-color: #000000;">
+    <%= render "devise/shared/leftlayout" %>
+</div>
+<%= render "devise/shared/modal" %>
+</div>
 <% end %>
+</div>

@@ -14,7 +14,7 @@
 				</svg>
 			</div>
 			<br>
-			<div style="background-color: #F0EEEE; padding: 10px; border-radius: 10px">
+			<div class="customHomeDiv">
 				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3">今日はPUBGゲームをどのようにプレイしていますか？</textarea>
 				<br>
 				<div class="mb-3 row" style="flex-direction: row;">
@@ -37,7 +37,7 @@
 			    </div>
 			</div>
 			<br>
-			<div style="background-color: #F0EEEE; padding: 10px; border-radius: 10px">
+			<div class="customHomeDiv">
 				<div style="display: flex; flex-direction: row; position: relative;">
 					<%= image_tag("img_avtdemo.png", height: '50', width: '50', style: "border-radius: 200px; border: 1px solid #FFFF00;", :alt => "avatar")%>
 					<h5 style="color: black; padding: 15px;"><%= current_user.name %></h5>
@@ -55,59 +55,9 @@
 			</div>
 	    </div>
 	    <div class="col-3" style="background-color: #000000;">
-	    	<br>
-	    	<%= image_tag("img_avtdemo.png", height: '200', width: '200', style: "border-radius: 200px; border: 5px solid #FFFF00; display: block; margin-left: auto; margin-right: auto;", :alt => "avatar")%>
-	    	<br>
-	    	<h4 style="color: white; font-weight: 500;" class="text-center"><%= current_user.name %></h4>
-	    	<h5 style="color: white;" class="text-center">ゲームID: <%= current_user.game_id %></h4>
-	    	<div class="col" style="background-color: white; border-radius: 5px;">
-	    		<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" style="margin-bottom: 5px;" class="bi bi-person-square" viewBox="0 0 16 16">
-				  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-				  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
-				</svg>
-	    		<%= link_to "プロフィール編集", edit_user_registration_path, :style => "color: black; font-size: 25px; text-decoration: unset;", :class => "text-center" %>  
-	    	</div>
-	    	<div class="col" style="background-color: white; margin-top: 5px; border-radius: 5px;">
-	    		<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" style="margin-bottom: 5px;" class="bi bi-heart" viewBox="0 0 16 16">
-				  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
-				</svg>
-	    		<button type="button" data-bs-toggle="modal" data-bs-target="#heart-modal" style="color: black; font-size: 25px; text-decoration: unset; background-color: white; border-width: 0;">
-				  ハート
-				</button>
-	    	</div>
-	    	<div class="col" style="background-color: white; margin-top: 5px; border-radius: 5px;">
-	    		<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" style="margin-bottom: 5px;" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-				  <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
-				  <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
-				</svg>
-	    		<%= link_to "ログアウト", destroy_user_session_path, method: :delete , :style => "color: black; font-size: 25px; text-decoration: unset;", :class => "text-center" %> 
-	    	</div>
-	    	<br>
-	    	<h4 style="color: white; font-weight: 300" >ゲームイベント</h4>
-	    	<%= image_tag("img_event1.png", height: '200', width: '260', style: "display: block; margin-left: auto; margin-right: auto;", :alt => "event")%>
-	    	<%= image_tag("img_event2.png", height: '200', width: '260', style: "display: block; margin-left: auto; margin-right: auto;", :alt => "event")%>
-	    	<%= image_tag("img_event3.png", height: '200', width: '260', style: "display: block; margin-left: auto; margin-right: auto;", :alt => "event")%>
+			<%= render "devise/shared/leftlayout" %>
 	  	</div>
-	  	<!-- Modal -->
-			<div class="modal fade" id="heart-modal" tabindex="-1" aria-labelledby="title" aria-hidden="true">
-			  <div class="modal-dialog">
-			    <div class="modal-content">
-			      <div class="modal-header" style="background-color: #F6AE20;">
-			        <h5 class="modal-title" id="title">ハート一覧</h5>
-			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			      </div>
-			      <div class="modal-body">
-			        <div style="display: flex; flex-direction: row; position: relative;">
-					<%= image_tag("img_avtdemo.png", height: '50', width: '50', style: "border-radius: 200px; border: 1px solid #FFFF00;", :alt => "avatar")%>
-					<h5 style="color: black; padding: 15px;"><%= current_user.name %></h5>
-					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" style="margin-top: 18px;" class="bi bi-heart-fill" viewBox="0 0 16 16">
-					  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
-					</svg>
-				</div>
-			      </div>
-			    </div>
-			  </div>
-			</div>
+	  	<%= render "devise/shared/modal" %>
   	</div>
 <% else %> 
 	<h1 style="color: white">ようこそPUBNETにいらっしゃいました</h1>

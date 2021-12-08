@@ -1,0 +1,20 @@
+<!-- Modal -->
+<div class="modal fade" id="heart-modal" tabindex="-1" aria-labelledby="title" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header" style="background-color: #F6AE20;">
+				<h5 class="modal-title" id="title">ハート一覧</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div style="display: flex; flex-direction: row; position: relative;">
+					<%= image_tag("img_avtdemo.png", height: '50', width: '50', style: "border-radius: 200px; border: 1px solid #FFFF00;", :alt => "avatar")%>
+					<h5 style="color: black; padding: 15px;"><%= current_user.name %></h5>
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" style="margin-top: 18px;" class="bi bi-heart-fill" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+					</svg>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

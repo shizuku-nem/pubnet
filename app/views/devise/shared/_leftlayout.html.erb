@@ -1,6 +1,8 @@
 <div>	
 	<br>
-	<%= image_tag("img_avtdemo.png", height: '200', width: '200', style: "border-radius: 200px; border: 5px solid #FFFF00; display: block; margin-left: auto; margin-right: auto;", :alt => "avatar")%>
+	<% if current_user.avatar.attached? %>
+		<%= image_tag(current_user.avatar, height: '200', width: '200', style: "border-radius: 200px; border: 5px solid #FFFF00; display: block; margin-left: auto; margin-right: auto;", :alt => "avatar")%>
+  	<% end %>
 	<br>
 	<h4 style="color: white; font-weight: 500;" class="text-center"><%= current_user.name %></h4>
 	<h5 style="color: white;" class="text-center">ゲームID: <%= current_user.game_id %></h5>

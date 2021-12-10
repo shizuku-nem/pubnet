@@ -12,14 +12,20 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="my-5 row" style="justify-content: center; color: white; align-items: center;" >
-        <label for="staticAvata" class="col-sm-2 col-form-label">写真</label>
+        <label for="staticAvata" class="col-sm-2 col-form-label">アバター</label>
         <div class="col-sm-4 text-center">
-					<%= image_tag("img_avtdemo.png", height: '100', width: '100', style: "border-radius: 50%; border: 6px solid #EEF149;", :alt => "avatar")%>
-					<%= image_tag("img_change_avt.png", height: '30', width: '30', style: "vertical-align: bottom; cursor: pointer;", :alt => "changeAvata")%>
+          <% if current_user.avatar.attached? %>
+        	  <%= image_tag(current_user.avatar, height: '100', width: '100', style: "border-radius: 50%; border: 6px solid #EEF149;", :alt => "avatar")%>
+          <% end %>
+         <div class="field">
+          	<%= f.label :avatar %>
+          	<%= f.file_field :avatar %><br>
+          </div>
         </div>
         <div class="col-sm-6"></div>
       </div>
-
+      <h3></h3>
+        
       <div class="mb-3 row" style="justify-content: center; color: white" >
         <label for="staticNickName" class="col-sm-2 col-form-label">ニックネーム *</label>
         <div class="col-sm-4">

@@ -23,5 +23,13 @@
 .customAdminDiv {
     background-color: #F4EDED; 
     padding: 5px; 
-    border-radius: 10px
+    border-radius: 10px;
+}
+.customAdminDiv .table td{
+    border-bottom: 1px solid black !important;
+    background-color: white;
+}
+.customAdminDiv .table th{
+    border: none;
+    border-bottom: 1px solid black !important;
 }

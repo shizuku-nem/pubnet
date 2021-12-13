@@ -4,22 +4,18 @@
   <div class="col-sm-6" style="display: flex; align-items: center; justify-content: center;">
     <h4 style="color: white">プロフィール編集</h4>
   </div>
-    <br>
-
   <div style="align-content: center; align-self: center; align-items: center; color: white; font-weight: 800;">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
       <div class="my-5 row" style="justify-content: center; color: white; align-items: center;" >
-        <label for="staticAvata" class="col-sm-2 col-form-label">アバター</label>
         <div class="col-sm-4 text-center">
           <% if current_user.avatar.attached? %>
         	  <%= image_tag(current_user.avatar, height: '100', width: '100', style: "border-radius: 50%; border: 6px solid #EEF149;", :alt => "avatar")%>
           <% end %>
-         <div class="field">
-          	<%= f.label :avatar %>
-          	<%= f.file_field :avatar %><br>
+         <div class="field" style="position: relative; height: 30px; width: 100px;left: 50px;top: 10px">
+          	<label for="user_avatar" style="position: absolute;top: 0;right: 0;left: 0;bottom: 0;background-color: #666;color: #fff;border-radius: 5px;line-height: 30px;text-align: center;cursor: pointer">アバター</label>
+          	<%= f.file_field :avatar, :title => "ファイルを選ぶ", style: "position: absoulte; opacity: 0; top: 0; left: 0; right: 0; bottom: 0" %><br>
           </div>
         </div>
         <div class="col-sm-6"></div>
@@ -41,47 +37,30 @@
         </div>
         <div class="col-sm-6"></div>
       </div>
-
-      <%
-=begin%>
- <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
-
-      <div class="mb-3 row" style="justify-content: center; color: white" >
+      <div class="mb-3 row" style="color: white">
         <div class="col-sm-12">
-            <i>(leave blank if you don't want to change it)</i>
+            <i>(変更したくない場合は空のままにする)</i>
         </div>
-        <label for="staticPassword" class="col-sm-2 col-form-label">パスワード *</label>
+        <label for="staticPassword" class="col-sm-2 col-form-label">パスワード</label>
         <div class="col-sm-4">
           <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control", style: "padding-left: 10px" %>
-          
         </div>
-        <div class="col-sm-6"></div>
-        <% if @minimum_password_length %>
-            <br />
-            <em><%= @minimum_password_length %> characters minimum</em>
-          <% end %>
       </div>
-
       <div class="mb-3 row" style="justify-content: center; color: white" >
-        <label for="staticPassword_confirmation " class="col-sm-2 col-form-label">パスワードの確認 *</label>
+        <label for="staticPassword_confirmation " class="col-sm-2 col-form-label">パスワードの確認</label>
         <div class="col-sm-4">
           <%= f.password_field :password_confirmation, autofocus: true, autocomplete: "new-password", class: "form-control", style: "padding-left: 10px" %>
         </div>
         <div class="col-sm-6"></div>
       </div>
-      <br />
-      <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
       <div class="mb-3 row" style="justify-content: center; color: white" >
-        <label for="current_password " class="col-sm-2 col-form-label">パスワードの確認 *</label>
+        <div class="col-sm-12"> <i>(変更を確認するには、現在のパスワードを入力しなければならない)</i> </div>
+        <label for="current_password " class="col-sm-2 col-form-label">現在のパスワード</label>
         <div class="col-sm-4">
-          <%= f.password_field :current_password, autofocus: true, autocomplete: "current_password", class: "form-control", style: "padding-left: 10px" %>
+          <%= f.password_field :current_password, autofocus: true, autocomplete: "current-password", class: "form-control", style: "padding-left: 10px" %>
         </div>
         <div class="col-sm-6"></div>
       </div> 
-<%
-=end%>
 
        <div class="mb-3 row" style="justify-content: center; color: white" >
         <label for="name" class="col-sm-2 col-form-label">名前 *</label>
@@ -120,7 +99,6 @@
       <br/>
       <div  class="mb-3 row" style="justify-content: center; color: white" >
         <div class="actions col-6" style="display: flex; align-items: center; justify-content: center;">
-           <%= button_to "キャンセル", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete , class: "btn btn-warning mr-5"%>
           <%= f.submit "保存", class: "btn btn-warning" %>
         </div>
         <div class="col-sm-6"></div>
@@ -130,7 +108,9 @@
     <% end %>
 
   </div>
-<%= link_to "Back", :back %>
+  <div class="actions col-6" style="display: flex; align-items: center; justify-content: center;">
+    <%= link_to "キャンセル", :back %>
+  </div>
 </div>
 </body>
 

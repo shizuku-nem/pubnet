@@ -9,6 +9,9 @@ class ApplicationController < ActionController::Base
     if current_user.is_admin
       return '/users'
     end
+    if !current_user.is_admin
+      return '/posts'
+    end
     return root_path
   end
   protected

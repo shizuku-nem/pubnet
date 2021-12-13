@@ -4,5 +4,33 @@
 .customHomeDiv {
     background-color: #F0EEEE; 
     padding: 5px; 
-    border-radius: 10px
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.image_avatar {
+    width: 50px;
+    height: 50px;
+}
+.image {
+    border-radius: 200px; 
+    border: 1px solid #FFFF00; 
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+.button_post {
+    -webkit-box-orient: vertical; 
+    -webkit-line-clamp: 1; 
+    display: -webkit-box;
+    border-radius: 30px;
+    margin-left: 20px;
+    margin-right: 50px;
+    border: 1px solid black; 
+    width: 100%;
+    background-color: #F0F2F5
+}
+.link_to {
+    color: black; 
+    font-size: 20px; 
+    text-decoration: unset;
 }

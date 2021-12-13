@@ -16,16 +16,16 @@
           </div>
           <br><br>
           <div class="d-flex justify-content-around">
-              <%= link_to "投稿", root_path,     :class => "btn btn-light", :style => "color: black" %>
+              <%= link_to "投稿", posts_path, :class => "btn btn-light", :style => "color: black" %>
               <%= link_to "ユーザ", users_path, :class => "btn btn-dark", :style => "color: white" %>
           </div>
           <br><br>
           <div class="customAdminDiv">
               <h3 class="text-center" style="padding: 10px;"> ユーザ一覧</h1>
 
-              <table class="table table-hover table-striped table-bordered">
+              <table class="table table-hover table-striped ">
                 <thead>
-                    <tr>
+                    <tr class = "text-center">
                         <th >ID</th>
                         <th>ニックネーム</th>
                         <th>アドレス</th>

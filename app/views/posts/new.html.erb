@@ -1,5 +1,16 @@
-<h1>New Post</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <br>
+      <%= render "devise/shared/search" %>
+      <br>
+      <%= render 'form', post: @post %>
+      <%= link_to 'Back', posts_path, :class => "btn btn-dark", :style => "color: white" %>
+  </div>
+    <div class="col-3" style="background-color: #000000;">
+      <%= render "devise/shared/leftlayout" %>
+    </div>
+    <%= render "devise/shared/modal" %>
+  </div>
+</div>
 
-<%= render 'form', post: @post %>
-
-<%= link_to 'Back', posts_path %>

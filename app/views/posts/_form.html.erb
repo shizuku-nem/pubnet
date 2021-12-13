@@ -1,42 +1,64 @@
-<%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-        <% post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<div class="customHomeDiv">
+  <div style="display: flex; flex-direction: row; position: relative;">
+    <div class="image_avatar"> 
+      <% if current_user.avatar.attached? %>
+      <%= image_tag(current_user.avatar, height: '50', width: '50', class: "image", :alt => "avatar")%>
+      <% end %>
     </div>
+    <h5 style="color: black; padding: 15px;"><%= current_user.name %></h5>
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" style="margin-top: 18px;" class="bi bi-heart" viewBox="0 0 16 16">
+      <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+    </svg>
+    <div class="col-7"></div>
+  </div>
+  <%= form_with(model: @post, local: true) do |form| %>
+  <div class="row">
+    <div class="col-1"></div>
+    <label for="title" class="col-2 col-form-label" style="color: black; font-size: 15px;">タイトル</label>
+    <div class="col-8">
+      <%= form.text_field :title, autofocus: true, class: "form-control", style: "padding-left: 10px" %>
+    </div>
+    <div class="col-1"></div>
+  </div><br>
+  <div class="row">
+    <div class="col-1"></div>
+    <label for="content" class="col-2 col-form-label" style="color: black; font-size: 15px;">内容</label>
+    <div class="col-8">
+      <%= form.text_area :content, autofocus: true, class: "form-control text-break", style: "padding-left: 10px;", rows: "4"%>
+    </div>
+    <div class="col-1"></div>
+  </div><br>
+  <div class="row">
+    <div class="col-1"></div>
+    <label for="tag" class="col-2 col-form-label" style="color: black; font-size: 15px;">タグ</label>
+    <div class="col-8">
+      <%= form.text_field :tag, autofocus: true, class: "form-control", style: "padding-left: 10px" %> 
+    </div>
+    <div class="col-1"></div>
+  </div><br>
+  <div class="row">
+    <div class="col-1"></div>
+    <label for="image" class="col-2 col-form-label" style="color: black; font-size: 15px;">画像</label>
+    <div class="col-8">
+      <%= form.file_field :image %><br>
+    </div>
+    <div class="col-1"></div>
+  </div><br>
+  <div class="row">
+    <div class="col-1"></div>
+    <label for="date" class="col-2 col-form-label" style="color: black; font-size: 15px;">日</label>
+    <div class="col-8">
+      <%= form.datetime_select :date %>
+    </div>
+    <div class="col-1"></div>
+  </div>
+  <br>
+  <div class="actions row">
+    <div class="col-4"></div>
+    <div class="col-4"><%= form.submit class: "btn btn-primary" %></div>
+    <div class="col-4"></div>
+  </div>
   <% end %>
+</div>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tag %>
-    <%= form.text_field :tag %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %><br>
-  </div>
-
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.datetime_select :date %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>

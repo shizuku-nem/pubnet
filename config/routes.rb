@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :post_comments
   resources :posts
   resources :books
   root 'static_pages#home'

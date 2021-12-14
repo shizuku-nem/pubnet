@@ -11,40 +11,7 @@
         <%= link_to "ユーザ", users_path, :class => "btn btn-dark", :style => "color: white" %>
       </div>
       <br><br>
-      <div class="customAdminDiv m-5 p-5">
-        <h3 class="text-center" style="padding: 10px;"> 投稿覧</h1>
-
-          <table class="table table-hover table-striped">
-            <thead>
-              <tr class="text-center">
-                <th>タイトル</th>
-                <th>コンテンツ</th>
-                <th>タグ</th>
-                <th>登録日</th>
-                <th>アクション</th>
-              </tr>
-            </thead>
-            <tbody class= "border-dark">
-              <% @posts.each do |post| %>
-              <tr>
-                <td style ="font-size: initial;"><%= post.title %></td>
-                <td style ="font-size: initial;"><%= post.content %></td>
-                <td style ="font-size: initial;"><%= post.tag %></td>
-                <td style ="font-size: initial;" class="text-center" ><%= post.date.strftime("%m/%d/%Y")  %></td>
-                <td class="text-center text-light" >
-                  <%= link_to 'Show', post, :class => "btn btn-info mx-2", :style => "color: white"  %><br>
-                  <%= link_to 'Edit', edit_post_path(post), :class => "btn btn-warning mx-2", :style => "color: white" %><br>
-                  <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-danger mx-2", :style => "color: white" %>
-                </td>
-              </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-        <br>
-        <div class= "text-right mx-5 my-2">
-          <%= link_to 'New Post', new_post_path,:class => "btn btn-info", :style => "color: white"  %>
-        </div>
+      <%= render "table" , posts: @posts %>
         <% else %>
         <div>
           <div class="customHomeDiv">
@@ -84,8 +51,8 @@
             <div style="display: flex; flex-direction: row; position: relative;">
               <div class="image_avatar"> 
                 <% if post.user.avatar.attached? %>
-            		  <%= image_tag(post.user.avatar, height: '50', width: '50', class: "image", :alt => "avatar")%>
-              	<% end %>
+                <%= image_tag(current_user.avatar, height: '50', width: '50', class: "image", :alt => "avatar")%>
+                <% end %>
               </div>
               <h5 style="color: black; padding: 15px;"><%= post.user.name %></h5>
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" style="margin-top: 18px;" class="bi bi-heart" viewBox="0 0 16 16">
@@ -96,15 +63,15 @@
             </div>
             <br>
             <div>
-              <strong><p class="title text-break"><%= post.title %></p></strong>
-              <p class="content text-break"><%= post.content %></p>
-              <strong><p class="tag"><%= post.tag %></p></strong>
+              <p style="color: black; font-weight: 400; font-size: 15px;"><%= post.title %></p>
+              <p style="color: black; font-weight: 400; font-size: 13px;" class="text-break"><%= post.content %></p>
+              <p style="color: black; font-weight: 400; font-size: 12px; text-decoration: underline;"><%= post.tag %></p>
               <%= image_tag(post.image, height: '500', width: '100%', style: "display: block; margin-left: auto; margin-right: auto;", :alt => "event")%>
               <hr>
               <div class="row">
               <div class="col-sm-5"></div>
               <div class="col-sm-2">
-                <%= link_to "コメント", post, :style => "color: black; font-size: 20px; text-decoration: unset;", :class => "text-center side-link" %> 
+                <%= link_to "詳細", post, :style => "color: black; font-size: 20px; text-decoration: unset;", :class => "text-center side-link" %> 
               </div>
               <div class="col-sm-5"></div>
             </div>
@@ -121,4 +88,3 @@
     <%= render "devise/shared/modal" %>
   </div>
 </div>
-

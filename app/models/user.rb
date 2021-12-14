@@ -11,5 +11,6 @@ class User < ApplicationRecord
   validates :game_id, presence: true, length: { in: 3..20 }
   enum gender: [ '男性', '女性', '他の性別' ]
   has_one_attached :avatar
-  has_many :post
+  has_many :posts
+  has_many :post_comments
 end

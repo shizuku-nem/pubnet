@@ -22,7 +22,7 @@
           <%= link_to "編集", edit_post_path(@post),data: { confirm: '本気ですか？' }, :style => "color: blue; font-size: 18px;  padding: 8px; text-decoration: unset; font-weight: bold" %> 
           <% end %>
         </div>
-        <p id="notice"><%= notice %></p>
+        <!--<p id="notice"><%= notice %></p>-->
         <p class="content text-break"><%= @post.date %></p>
         <strong><p class="title text-break"><%= @post.title %></p></strong>
         <p class="content text-break"><%= @post.content %></p>

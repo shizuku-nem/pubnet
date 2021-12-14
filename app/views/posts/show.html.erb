@@ -11,19 +11,22 @@
             <%= image_tag(@post.user.avatar, height: '50', width: '50', class: "image", :alt => "avatar")%>
             <% end %>
           </div>
-          <h5 style="color: black; padding: 15px;"><%= @post.user.name %></h5>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" style="margin-top: 18px;" class="bi bi-heart" viewBox="0 0 16 16">
+          <div class="col-3">
+          <h5 style="color: black; padding: 10px;"><%= @post.user.name %></h5>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" style="margin-top: 10px;" class="bi bi-heart" viewBox="0 0 16 16">
             <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
           </svg>
-          <div class="col-6"></div>
+          <div class="col-5"></div>
           <% if @post.user.id == current_user.id %>
-          <%= button_to '消去', @post, method: :delete, data: { confirm: '本気ですか？' }, :class => "btn btn-danger", :style => "
-          margin-right: 0px, margin-top: 10px"%>
-          <%= link_to "編集", edit_post_path(@post),data: { confirm: '本気ですか？' }, :style => "color: blue; font-size: 18px;  padding: 8px; text-decoration: unset; font-weight: bold" %> 
+          <div class="col-1"><%= button_to '消去', @post, method: :delete, data: { confirm: '本気ですか？' }, :class => "btn btn-danger", :style => "
+          margin-right: 0px, margin-top: 10px"%></div>
+          <div class="col-2">
+          <%= link_to "編集", edit_post_path(@post),data: { confirm: '本気ですか？' }, :class => "btn btn-primary", :style => "
+          margin-right: 0px, margin-top: 10px" %> </div>
           <% end %>
         </div>
-        <!--<p id="notice"><%= notice %></p>-->
-        <p class="content text-break"><%= @post.date %></p>
+        <p class="date text-break"><%= @post.date %></p>
         <strong><p class="title text-break"><%= @post.title %></p></strong>
         <p class="content text-break"><%= @post.content %></p>
         <strong><p class="tag"><%= @post.tag %></p></strong>
@@ -35,7 +38,7 @@
         </p>
       </div>
       <div class="customHomeDiv">
-        <% @post.post_comments.each do |post_comment|%>
+        <% @post.post_comment.each do |post_comment|%>
         <div style="display: flex; flex-direction: row; position: relative;">
           <div class="image_avatar"> 
             <% if post_comment.user.avatar.attached? %>

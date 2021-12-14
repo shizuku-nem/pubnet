@@ -10,7 +10,7 @@
         <label for="staticNickName" class="col-sm-2 col-form-label">ニックネーム *</label>
         <div class="col-sm-4">
           <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "form-control", style: "padding-left: 10px" %>
-          <% if resource.errors.any? && resource.errors[:nickname] %>
+          <% if resource.errors.any? && resource.errors[:nickname][0] %>
               <div class = "text-danger">ニックネームフィールドは空白のままにすることはできません, 3文字以上20文字以下。</div>
           <% end %>
         </div>
@@ -21,7 +21,7 @@
       <label for="staticEmail" class="col-sm-2 col-form-label"> メールアドレス *</label>
       <div class="col-sm-4">
         <%= f.email_field :email, autocomplete: "email", class: "form-control", style: "padding-left: 10px" %>
-        <% if resource.errors.any? && resource.errors[:email] %>
+        <% if resource.errors.any? && resource.errors[:email][0] %>
               <div class = "text-danger">ニックネームフィールドは空白のままにすることはできません。 正しいメール形式が必要です。</div>
           <% end %>
       </div>
@@ -32,7 +32,7 @@
         <label for="staticPassword" class="col-sm-2 col-form-label">パスワード *</label>
         <div class="col-sm-4">
           <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control", style: "padding-left: 10px" %>
-          <% if resource.errors.any? && resource.errors[:password] %>
+          <% if resource.errors.any? && resource.errors[:password][0] %>
               <div class = "text-danger">パスワードフィールドは空白のままにすることはできません。</div>
           <% end %>
         </div>
@@ -43,7 +43,7 @@
         <label for="staticPassword_confirmation " class="col-sm-2 col-form-label">パスワードの確認 *</label>
         <div class="col-sm-4">
           <%= f.password_field :password_confirmation, autofocus: true, autocomplete: "new-password", class: "form-control", style: "padding-left: 10px" %>
-          <% if resource.errors.any? && resource.errors[:password_confirmation] %>
+          <% if resource.errors.any? && resource.errors[:password_confirmation][0] %>
               <div class = "text-danger">パスワードの確認フィールドは空白のままにすることはできません。</div>
           <% end %>
         </div>
@@ -54,7 +54,7 @@
         <label for="staticName" class="col-sm-2 col-form-label">名前 *</label>
         <div class="col-sm-4">
           <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", style: "padding-left: 10px" %>
-          <% if resource.errors.any? && resource.errors[:name] %>
+          <% if resource.errors.any? && resource.errors[:name][0] %>
               <div class = "text-danger">名前フィールドは空白のままにすることはできません。 </div>
           <% end %>
         </div>
@@ -65,7 +65,7 @@
         <label for="staticIDGame" class="col-sm-2 col-form-label">ゲームID *</label>
         <div class="col-sm-4">
           <%= f.text_field :game_id, class: "form-control", style: "padding-left: 10px" %>
-          <% if resource.errors.any? && resource.errors[:game_id] %>
+          <% if resource.errors.any? && resource.errors[:game_id][0] %>
               <div class = "text-danger">ゲームIDは空白のままにすることはできません, 3文字以上20文字以下。</div>
           <% end %>
         </div>
@@ -76,7 +76,7 @@
         <label for="staticGender" class="col-sm-2 col-form-label">性別</label>
         <div class="col-sm-4">
           <%= f.select :gender, User.genders.keys.to_a, class: "form-control", style: "" %>
-           <% if resource.errors.any? && resource.errors[:gender] %>
+           <% if resource.errors.any? && resource.errors[:gender][0] %>
               <div class = "text-danger">性別フィールドは空白のままにすることはできません。</div>
           <% end %>
         </div>
@@ -87,7 +87,7 @@
         <label for="staticAge" class="col-sm-2 col-form-label">年齢</label>
         <div class="col-sm-4">
           <%= f.text_field :age, class: "form-control", style: "padding-left: 10px" %>
-           <% if resource.errors.any? && resource.errors[:age] %>
+           <% if resource.errors.any? && resource.errors[:age][0] %>
               <div class = "text-danger">年齢フィールドは空白のままにすることはできません, 0文字以上120文字以下。</div>
           <% end %>
         </div>

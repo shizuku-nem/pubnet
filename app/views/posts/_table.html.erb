@@ -1,6 +1,5 @@
-<div class="customAdminDiv m-5 p-5">
+<div class="customAdminDiv">
         <h3 class="text-center" style="padding: 10px;"> 投稿一覧</h1>
-
           <table class="table table-hover table-striped">
             <thead>
               <tr class="text-center">
@@ -20,7 +19,7 @@
                 <td style ="font-size: initial;"><%= post.user.name %></td>
                 <td style ="font-size: initial;"><%= post.tag %></td>
                 <td style ="font-size: initial;" class="text-center" ><%= post.date.strftime("%y/%m/%d")  %></td>
-                <td style ="font-size: initial;"><%= post.post_comments.size %></td>
+                <td style ="font-size: initial;"><%= post.post_comment.size %></td>
                 <td style ="font-size: initial;"><%= link_to "#{post_path(post)}", post_path(post) %></td>
                 <td class="text-center text-light" >
                   <%= link_to '削除', post, method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-danger mx-2", :style => "color: white" %>

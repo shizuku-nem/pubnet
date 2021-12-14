@@ -10,57 +10,7 @@
               <%= link_to "ユーザ", users_path, :class => "btn btn-dark", :style => "color: white" %>
           </div>
           <br><br>
-          <div class="customAdminDiv">
-              <h3 class="text-center" style="padding: 10px;"> ユーザ一覧</h1>
-
-                  <table class="table table-hover table-striped ">
-                    <thead>
-                        <tr class = "text-center">
-                            <th >ID</th>
-                            <th>ニックネーム</th>
-                            <th>アドレス</th>
-                            <th>管理者？</th>
-                            <th>投稿</th>
-                            <th>コメント</th>
-                            <th>リンク</th>
-                            <th>アクション</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% @users.each do |user| %>
-                        
-                        <tr>
-                            <td  class="textTable"><%= user.id %></td>
-                            <td  class="textTable"><%= user.nickname %></td>
-                            <td  class="textTable"><%= user.email %></td>
-                            <td  class="textTable">
-                                <%= user.is_admin %>
-                                <% if current_user.id != user.id %>
-                                <%= render "users/confirm_modal/edit", user: user %>
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#edit-confirm-modal" class="btn btn-primary", style="color: white;">
-                                    編集
-                                </button>
-                                <% end %>
-                            </td>
-                            
-                            <td  class="textTable"> null</td>
-                            <td  class="textTable"> null </td>
-                            <td  class="textTable"><%= "/user#{user.id}" %></td>
-                            
-                            <td>
-                                <% if current_user.id != user.id %>
-                                <%= link_to "削除", user_path(user),
-                                method: :delete,
-                                data: {confirm: "Are you sure?"}, :class => "btn btn-danger", :style => "color: white" %> 
-                                <% end %>
-                            </td>
-                        </tr>
-
-                        <% end %>
-                    </tbody>
-                </table>
-                <%= link_to "追加", new_user_path, :class => "btn btn-warning", :style => "color: white" %>
-            </div>
+          <%= render "table", users: @users %>
             <br>
             
         </div>

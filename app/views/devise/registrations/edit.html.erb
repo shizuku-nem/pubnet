@@ -9,7 +9,6 @@
   <div style="align-content: center; align-self: center; align-items: center; color: white; font-weight: 800;">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="my-5 row" style="justify-content: center; color: white; align-items: center;" >
         <label for="staticAvata" class="col-sm-2 col-form-label">アバター</label>
@@ -30,6 +29,9 @@
         <label for="staticNickName" class="col-sm-2 col-form-label">ニックネーム *</label>
         <div class="col-sm-4">
           <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class: "form-control", style: "padding-left: 10px" %>
+           <% if resource.errors.any? && resource.errors[:nickname][0] %>
+              <div class = "text-danger">ニックネームフィールドは空白のままにすることはできません, 3文字以上20文字以下。</div>
+          <% end %>
         </div>
         <div class="col-sm-6"></div>
       </div>
@@ -38,6 +40,9 @@
         <label for="staticEmail" class="col-sm-2 col-form-label"> メールアドレス *</label>
         <div class="col-sm-4">
           <%= f.email_field :email, utofocus: true, autocomplete: "email", class: "form-control", style: "padding-left: 10px" %>
+         <% if resource.errors.any? && resource.errors[:email][0] %>
+              <div class = "text-danger">ニックネームフィールドは空白のままにすることはできません。 正しいメール形式が必要です。</div>
+          <% end %>
         </div>
         <div class="col-sm-6"></div>
       </div>
@@ -87,6 +92,9 @@
         <label for="name" class="col-sm-2 col-form-label">名前 *</label>
         <div class="col-sm-4">
           <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", style: "padding-left: 10px" %>
+          <% if resource.errors.any? && resource.errors[:name][0] %>
+              <div class = "text-danger">名前フィールドは空白のままにすることはできません。 </div>
+          <% end %>
         </div>
         <div class="col-sm-6"></div>
       </div>
@@ -95,6 +103,9 @@
         <label for="game_id" class="col-sm-2 col-form-label">ゲームID *</label>
         <div class="col-sm-4">
           <%= f.text_field :game_id, class: "form-control", style: "padding-left: 10px" %>
+          <% if resource.errors.any? && resource.errors[:game_id][0] %>
+              <div class = "text-danger">ゲームIDは空白のままにすることはできません, 3文字以上20文字以下。</div>
+          <% end %>
         </div>
         <div class="col-sm-6"></div>
       </div>
@@ -104,6 +115,9 @@
         <label for="gender" class="col-sm-2 col-form-label">性別</label>
         <div class="col-sm-4">
           <%= f.select :gender, User.genders.keys.to_a, class: "form-control", style: "" %>
+           <% if resource.errors.any? && resource.errors[:gender][0] %>
+              <div class = "text-danger">性別フィールドは空白のままにすることはできません。</div>
+          <% end %>
         </div>
         <div class="col-sm-6"></div>
       </div>
@@ -113,6 +127,9 @@
         <label for="staticAge" class="col-sm-2 col-form-label">年齢</label>
         <div class="col-sm-4">
           <%= f.text_field :age, class: "form-control", style: "padding-left: 10px" %>
+          <% if resource.errors.any? && resource.errors[:age][0] %>
+              <div class = "text-danger">年齢フィールドは空白のままにすることはできません, 0文字以上120文字以下。</div>
+          <% end %>
         </div>
         <div class="col-sm-6"></div>
       </div>

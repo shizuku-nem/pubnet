@@ -34,10 +34,10 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
 
       ## More info
       t.string :nickname
-      t.int :gender, null: false, default: 0
+      t.integer :gender, null: false, default: 0
       t.string :game_id
       t.string :name
-      t.int :age
+      t.integer :age
 
       t.timestamps null: false
     end

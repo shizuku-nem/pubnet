@@ -40,7 +40,6 @@
               <% end %>
             </tbody>
           </table>
-          <%= link_to "追加", new_user_path, :class => "btn btn-warning", :style => "color: white" %>
         </div>
         <br>
         <div class= "text-right mx-5 my-2">
@@ -85,7 +84,7 @@
             <div style="display: flex; flex-direction: row; position: relative;">
               <div class="image_avatar"> 
                 <% if post.user.avatar.attached? %>
-            		  <%= image_tag(post.user.avatar, height: '20', width: '20', style: "border-radius: 5px; border: 1px solid #FFFF00; display: block; margin-left: auto; margin-right: auto;", :alt => "avatar")%>
+            		  <%= image_tag(post.user.avatar, height: '50', width: '50', class: "image", :alt => "avatar")%>
               	<% end %>
               </div>
               <h5 style="color: black; padding: 15px;"><%= post.user.name %></h5>
@@ -97,9 +96,9 @@
             </div>
             <br>
             <div>
-              <p style="color: black; font-weight: 400; font-size: 15px;"><%= post.title %></p>
-              <p style="color: black; font-weight: 400; font-size: 13px;" class="text-break"><%= post.content %></p>
-              <p style="color: black; font-weight: 400; font-size: 12px; text-decoration: underline;"><%= post.tag %></p>
+              <strong><p class="title text-break"><%= post.title %></p></strong>
+              <p class="content text-break"><%= post.content %></p>
+              <strong><p class="tag"><%= post.tag %></p></strong>
               <%= image_tag(post.image, height: '500', width: '100%', style: "display: block; margin-left: auto; margin-right: auto;", :alt => "event")%>
               <hr>
               <div class="row">
